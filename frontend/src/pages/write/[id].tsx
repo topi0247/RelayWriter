@@ -92,6 +92,9 @@ const WriteContinue = () => {
     if (text === "") {
       alert("文字を入力してください");
       return;
+    } else if (text.length >= 400) {
+      alert("文字数が多すぎます");
+      return;
     }
 
     const body = {
@@ -199,7 +202,7 @@ const WriteContinue = () => {
             })}
           </div>
         </section>
-        <div className="col-span-1 w-full mx-auto mt-10 horizontal-tb flex justify-end items-center gap-3 mr-32">
+        <div className="col-span-1 w-full mx-auto mt-10 horizontal-tb flex justify-end items-center gap-3 mr-32 z-10">
           <Button variant="outlined" type="button" onClick={toggleRead}>
             {isReading ? "戻す" : "読み返す"}
           </Button>

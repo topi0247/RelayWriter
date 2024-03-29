@@ -1,5 +1,6 @@
 import { SSNovelBody } from "@/types";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { memo, useCallback, useEffect, useState } from "react";
 
 // TODO : この関数は共通化できる
@@ -45,7 +46,7 @@ const ReadPage = memo(
       if (!isReading) {
         toggleRead();
       }
-      setMovePage(100);
+      setMovePage(80);
       setReadPage(true);
       setRotatePage(0);
     };
@@ -55,37 +56,30 @@ const ReadPage = memo(
     return (
       <>
         <section
-          className={`absolute  h-[630px] shadow-md hover:translate-x-10 transition-all p-4 ${bgColor}`}
+          className={`absolute h-[600px] w-[900px] shadow-md transition-all p-4 ${bgColor}`}
           style={{
             ...style,
             transform: `translateX(${movePage}%) rotate(${rotatePage}deg)`,
           }}
         >
           <div
-            className="flex justify-between p-2 cursor-pointer "
-            onClick={handleClick}
+            className="flex justify-between p-2 cursor-pointer bg-green-100 border-green-300 border bg-opacity-50"
+            onClick={readPage ? handleBack : handleClick}
           >
             <h2 className="text-2xl">
               {NarrativeStageConvert[ssnovelBody.narrative_stage]}
             </h2>
+            {readPage ? (
+              <ArrowBackIosNewIcon className="text-green-300" />
+            ) : (
+              <ArrowForwardIosIcon className="text-green-300" />
+            )}
             <h4 className="text-xl pb-8">{ssnovelBody.user.name}</h4>
           </div>
           <div>
             <p className="whitespace-pre-wrap tracking-[0.25em] leading-10 text-xl mt-4">
               {ssnovelBody.content}
             </p>
-          </div>
-          <div
-            className={`absolute bottom-[-80px] left-4  ${
-              readPage ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <button
-              className={`border hover:border-slate-300 hover:${bgColor} bg-opacity-20 hover:bg-opacity-70 transition-all w-full p-2 my-2 text-gray-600 flex flex-col justify-between items-center tracking-[32px] gap-2 ${bgColor} text-slate-500`}
-              onClick={handleBack}
-            >
-              <ArrowBackIosNewIcon />
-            </button>
           </div>
         </section>
       </>
