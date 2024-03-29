@@ -3,13 +3,6 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    user = User.find_by(email: sign_up_params[:email])
-    Rails.logger.info("============================")
-    Rails.logger.info("User created: #{user}")
-    Rails.logger.info("User persisted: #{user.persisted?}")
-    Rails.logger.info("User errors: #{user.errors.full_messages}")
-    Rails.logger.info("============================")
-    sign_in user if user.persisted?
   end
 
   private

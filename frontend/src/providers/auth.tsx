@@ -137,9 +137,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         if (!response.ok) {
           throw new Error("登録に失敗しました");
         }
-        const data = await response.json();
-        setUser(data.data);
-        setIsLoggedIn(true);
         resolve(true);
       } catch (error) {
         reject(false);

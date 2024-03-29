@@ -38,11 +38,19 @@ const SignUp = () => {
 
     try {
       await signUp(name, email, password, passwordConfirmation)
-        .then(() => {
-          router.push("/read");
+        .then((isSignUp) => {
+          if (isSignUp) {
+            router.push("/login");
+          } else {
+            throw new Error("505");
+          }
         })
         .catch(() => {
-          setIsErrorMsg(["登録できないよ", "もう一度やってみてね"]);
+          setIsErrorMsg([
+            "登録できないよ",
+            "もう一度やってみてね",
+            "※名前が被っていると登録できません",
+          ]);
         });
     } catch (error) {
       console.error(error);
