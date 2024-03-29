@@ -8,6 +8,7 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import ReadPage from "./readPage";
 import { useAuth } from "@/providers/auth";
+import Link from "next/link";
 
 const Reading = ({ id }: { id: number }) => {
   const [novel, setNovel] = useState({} as SSNovel);
@@ -100,6 +101,13 @@ const Reading = ({ id }: { id: number }) => {
                 ))}
             </Swiper>
             <div className="fixed bottom-1/4 left-0 m-auto flex justify-between items-center px-10 z-50 vertical-rl gap-8">
+              <a
+                href={`http://twitter.com/share?url=kotonoha-tsumugi.vercel.app&text=${novel.title}を読んだよ&hashtags=言の葉つむぎ_topi`}
+                target="_blank"
+                className="border border-transparent hover:border-blue-800 hover:border-opacity-50 hover:bg-blue-300 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-8"
+              >
+                Xでシェア
+              </a>
               {getIsContinue() && (
                 <button
                   className="border border-transparent hover:border-green-800 hover:border-opacity-50 hover:bg-green-300 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-8"
