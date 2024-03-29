@@ -78,7 +78,7 @@ const Reading = ({ id }: { id: number }) => {
         <div>loading...</div>
       ) : (
         <article className="horizontal-tb fixed w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-40">
-          <section className="max-w-[1200px] w-full aspect-video m-auto">
+          <section className="max-w-[1200px] w-full aspect-video m-auto relative flex flex-row-reverse">
             <Swiper
               effect={"cards"}
               grabCursor={true}
@@ -99,10 +99,10 @@ const Reading = ({ id }: { id: number }) => {
                   </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="w-full m-auto flex justify-between items-center gap-32 px-10">
+            <div className="fixed bottom-1/4 left-0 m-auto flex justify-between items-center px-10 z-50 vertical-rl gap-8">
               {getIsContinue() && (
                 <button
-                  className="border border-transparent hover:border-green-800 hover:border-opacity-50 hover:bg-green-300 hover:bg-opacity-10 transition-all horizontal-tb w-full p-4 my-4 text-white flex justify-center items-center gap-10"
+                  className="border border-transparent hover:border-green-800 hover:border-opacity-50 hover:bg-green-300 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-8"
                   onClick={handleWriteClick}
                 >
                   <span>続</span>
@@ -113,7 +113,7 @@ const Reading = ({ id }: { id: number }) => {
                 </button>
               )}
               <button
-                className="border border-transparent hover:border-slate-800 hover:border-opacity-20 hover:bg-slate-500 hover:bg-opacity-10 transition-all horizontal-tb w-full p-4 my-4 text-white flex justify-center items-center gap-32"
+                className="border border-transparent hover:border-slate-800 hover:border-opacity-20 hover:bg-slate-500 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-16"
                 onClick={handleBackClick}
               >
                 <span>戻</span>
