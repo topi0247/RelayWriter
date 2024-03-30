@@ -100,17 +100,10 @@ const Reading = ({ id }: { id: number }) => {
                   </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="fixed bottom-1/4 left-0 m-auto flex justify-between items-center px-10 z-50 vertical-rl gap-8">
-              <a
-                href={`http://twitter.com/share?url=kotonoha-tsumugi.vercel.app&text=${novel.title}を読んだよ&hashtags=言の葉つむぎ_topi`}
-                target="_blank"
-                className="border border-transparent hover:border-blue-800 hover:border-opacity-50 hover:bg-blue-300 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-8"
-              >
-                Xでシェア
-              </a>
+            <div className="absolute bottom-8 left-0 m-auto flex justify-between items-center z-50 vertical-rl gap-8 mb-12">
               {getIsContinue() && (
                 <button
-                  className="border border-transparent hover:border-green-800 hover:border-opacity-50 hover:bg-green-300 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-8"
+                  className="border border-transparent hover:border-green-800 hover:border-opacity-50 hover:bg-green-300 hover:bg-opacity-10 transition-all p-4 text-green-500 flex justify-center items-center gap-8 border-white bg-white bg-opacity-20"
                   onClick={handleWriteClick}
                 >
                   <span>続</span>
@@ -120,8 +113,15 @@ const Reading = ({ id }: { id: number }) => {
                   <span>ぐ</span>
                 </button>
               )}
+              <a
+                href={`http://twitter.com/share?url=kotonoha-tsumugi.vercel.app&text=小説【${novel.title}】があるよ&hashtags=言の葉つむぎ_topi`}
+                target="_blank"
+                className="border border-transparent hover:border-blue-800 hover:border-opacity-50 hover:bg-blue-300 hover:bg-opacity-10 transition-all p-4 text-blue-500 flex justify-center items-center gap-8 border-white bg-white bg-opacity-20"
+              >
+                Xでシェア
+              </a>
               <button
-                className="border border-transparent hover:border-slate-800 hover:border-opacity-20 hover:bg-slate-500 hover:bg-opacity-10 transition-all p-4 my-4 text-gray-500 flex justify-center items-center gap-16"
+                className="border border-transparent hover:border-slate-800 hover:border-opacity-50 hover:bg-slate-300 hover:bg-opacity-10 transition-all p-4 text-slate-500 flex justify-center items-center gap-8 border-white bg-white bg-opacity-20"
                 onClick={handleBackClick}
               >
                 <span>戻</span>
