@@ -32,7 +32,16 @@ const Reading = ({ id }: { id: number }) => {
       );
       const data = await response.json();
       setNovel(data);
-      setSSNovelBodies(data.ssnovel_bodies);
+      console.log(data.ssnovel_bodies);
+      // idの逆順にソート
+      const sortedData = data.ssnovel_bodies.sort(
+        (a: SSNovelBody, b: SSNovelBody) => {
+          if (a.id > b.id) return -1;
+          if (a.id < b.id) return 1;
+          return 0;
+        }
+      );
+      setSSNovelBodies(sortedData);
     } catch (error) {
       console.error(error);
     }
@@ -87,18 +96,15 @@ const Reading = ({ id }: { id: number }) => {
               className="w-full h-full"
               initialSlide={ssnovelBodies.length - 1}
             >
-              {ssnovelBodies
-                .slice()
-                .reverse()
-                .map((ssnovelBody) => (
-                  <SwiperSlide
-                    key={ssnovelBody.id}
-                    className={`flex justify-center items-center vertical-rl
+              {ssnovelBodies.map((ssnovelBody) => (
+                <SwiperSlide
+                  key={ssnovelBody.id}
+                  className={`flex justify-center items-center vertical-rl
                               ${getBgColor(ssnovelBody.narrative_stage)}`}
-                  >
-                    <ReadPage ssnovelBody={ssnovelBody} title={novel.title} />
-                  </SwiperSlide>
-                ))}
+                >
+                  <ReadPage ssnovelBody={ssnovelBody} title={novel.title} />
+                </SwiperSlide>
+              ))}
             </Swiper>
             <div className="absolute bottom-8 left-0 m-auto flex justify-between items-center z-50 vertical-rl gap-8 mb-12">
               {getIsContinue() && (
