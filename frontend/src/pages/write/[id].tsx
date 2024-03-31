@@ -92,7 +92,7 @@ const WriteContinue = () => {
     if (text === "") {
       alert("文字を入力してください");
       return;
-    } else if (text.length >= 400) {
+    } else if (text.length > 400) {
       alert("文字数が多すぎます");
       return;
     }
