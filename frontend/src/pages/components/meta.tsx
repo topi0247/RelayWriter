@@ -23,7 +23,7 @@ const Meta = ({
   twitterCard = "summary",
   twitterSite = "@your-default-twitter-handle",
   lang = "ja_JP",
-  isHomePage = false,
+  isHomePage = true,
 }: MetaProps) => {
   const pageTitle = isHomePage ? siteName : `${title} - ${siteName}`; // 修正
 
